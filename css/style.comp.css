@@ -1,0 +1,289 @@
+/*
+
+0 - 600px": Phone
+600 - 900px: tablet portrait
+900 - 1200px: tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + : big desktop
+
+breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+*,
+*::after,
+*::before {
+  /* use every time */
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  /* the 10px we want devided by the default browser fontsize 16px */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+/* all the sizes depends on this to have a more responsive design */
+body {
+  /* use every time */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+/*
+body::-webkit-scrollbar {
+    width: 1.2rem;
+}
+ 
+body::-webkit-scrollbar-track {
+    background-color: rgba($bp, 1);
+
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgba($color-grey-light-2, 1);
+  box-sizing: border-box;
+  border: solid 1px rgba($bp, 1);
+  border-radius: .2rem;
+  transition: all .2s;
+}
+ */
+body {
+  /* use every time */
+  font-family: 'Martel Sans', sans-serif;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  font-weight: 400; }
+
+.primary-h1 {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: 200; }
+
+@keyframes titlein {
+  0% {
+    transform: translateX(-24rem) skew(-20deg); }
+  100% {
+    transform: translateX(0) skew(-20deg); } }
+
+@keyframes cardin {
+  0% {
+    transform: translateX(70rem) skewX(-20deg); }
+  100% {
+    transform: translateX(0) skewX(-20deg); } }
+
+.myinfo {
+  width: 100vw;
+  height: 8rem;
+  background-image: linear-gradient(to right, #1e3c72, #2a5298);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding-left: 2rem;
+  text-transform: uppercase; }
+  .myinfo__myname {
+    color: #f7f7f7;
+    font-size: 2.8rem;
+    margin-top: .5rem;
+    font-weight: 400; }
+    @media (max-width: 56.25em) {
+      .myinfo__myname {
+        font-size: 2.5rem; } }
+  .myinfo__myjob {
+    margin-top: -1.2rem;
+    color: #eee;
+    font-weight: 200; }
+    @media (max-width: 56.25em) {
+      .myinfo__myjob {
+        font-size: 2rem; } }
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; }
+  @media (max-width: 75em) {
+    .main {
+      flex-direction: column; } }
+  .main .skills-section {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: 100%;
+    background-size: cover;
+    background-position: top;
+    margin-left: 0 auto;
+    padding-top: 11rem;
+    padding-bottom: 3rem;
+    position: relative;
+    overflow: hidden; }
+    @media (max-width: 75em) {
+      .main .skills-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        height: auto;
+        width: 100%;
+        order: 2;
+        margin-top: -4rem;
+        margin-bottom: -4rem; } }
+    .main .skills-section_list {
+      list-style: none;
+      width: 90%; }
+      .main .skills-section_list-item {
+        font-size: 2rem;
+        margin: 1rem 6rem;
+        color: #000; }
+        .main .skills-section_list-item::before {
+          content: "\2022";
+          /* Add content: \2022 is the CSS Code/unicode for a bullet */
+          color: #2a5298;
+          /* Change the color */
+          font-weight: bold;
+          /* If you want it to be bold */
+          display: inline-block;
+          /* Needed to add space between the bullet and the text */
+          width: 2rem;
+          /* Also needed for space (tweak if needed) */
+          margin-left: -2rem;
+          /* Also needed for space (tweak if needed) */ }
+        .main .skills-section_list-item a {
+          color: #2a5298;
+          text-decoration: none;
+          transition: all .2s; }
+          .main .skills-section_list-item a:active {
+            color: #2a5298; }
+          .main .skills-section_list-item a:hover {
+            color: #1e3c72; }
+    .main .skills-section-title {
+      margin-top: 2rem;
+      width: 24rem;
+      background-color: #1e3c72;
+      margin-left: 5rem;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-radius: 1rem;
+      transform: skew(-20deg); }
+      @media (max-width: 75em) {
+        .main .skills-section-title {
+          margin-bottom: 1rem; } }
+      .main .skills-section-title-h1 {
+        color: #f7f7f7;
+        font-size: 2.5rem;
+        width: 24rem;
+        transform: skew(20deg); }
+        @media (max-width: 75em) {
+          .main .skills-section-title-h1 {
+            font-size: 2.5rem; } }
+  .main .sidepanel {
+    background-color: #1e3c72;
+    background-repeat: repeat;
+    background-position: top;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    padding-top: 13rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center; }
+    @media (max-width: 75em) {
+      .main .sidepanel {
+        width: 100%;
+        padding-top: 10rem;
+        order: 1;
+        border-bottom-left-radius: 3rem;
+        z-index: 2; } }
+    .main .sidepanel__title {
+      background-color: #f7f7f7;
+      border-radius: 1rem;
+      transform: skew(-20deg);
+      margin-bottom: 3rem;
+      padding-left: .8rem;
+      padding-right: .8rem; }
+      @media (max-width: 75em) {
+        .main .sidepanel__title {
+          margin-bottom: 2rem; } }
+      .main .sidepanel__title-h2 {
+        text-align: center;
+        color: #1e3c72;
+        width: 26rem;
+        font-size: 2rem;
+        transform: skew(20deg);
+        text-transform: uppercase;
+        font-weight: 300;
+        padding-top: 0.2rem; }
+    .main .sidepanel__info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      width: 90%; }
+      @media (max-width: 75em) {
+        .main .sidepanel__info {
+          flex-direction: row; } }
+      @media (max-width: 37.5em) {
+        .main .sidepanel__info {
+          flex-direction: column;
+          align-items: center; } }
+      .main .sidepanel__info__box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        justify-content: center; }
+        @media (max-width: 75em) {
+          .main .sidepanel__info__box {
+            margin-right: 2rem; } }
+        @media (max-width: 37.5em) {
+          .main .sidepanel__info__box {
+            margin-right: 0; } }
+        .main .sidepanel__info__box-h31 {
+          color: #333;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 1.5rem;
+          margin-right: .5rem;
+          color: #f7f7f7; }
+          @media (max-width: 75em) {
+            .main .sidepanel__info__box-h31 {
+              font-size: 1.8rem; } }
+        .main .sidepanel__info__box-h3 {
+          color: #333;
+          text-transform: uppercase;
+          font-weight: 300;
+          font-size: 1.5rem;
+          color: #f7f7f7; }
+          @media (max-width: 75em) {
+            .main .sidepanel__info__box-h3 {
+              font-size: 1.8rem; } }
+
+.webfooter {
+  background-color: #333;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative; }
+  .webfooter__text {
+    text-align: center;
+    color: #eee; }
+  @media (max-width: 75em) {
+    .webfooter {
+      border-top-right-radius: 3rem;
+      z-index: 2; } }
